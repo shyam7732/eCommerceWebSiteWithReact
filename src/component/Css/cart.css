@@ -1,0 +1,27 @@
+.cart{
+    margin-top: 2.2rem;
+    padding: 2%;
+}
+.cart-list{
+    padding: 3rem;
+}
+.cart-list .cart-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart-list .cart-item img{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+.cart-list .cart-item .left, .cart-list .cart-item .right{
+    width: 25%;
+}
+.cart-list .cart-item .center{
+    width: 50%;
+}
+.deletToCart{
+    text-decoration: none;
+    color: #000;
+}

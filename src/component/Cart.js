@@ -1,71 +1,86 @@
-import React, { useState, useContext } from 'react'
-import { ecommerceContext } from './Main'
-import { Link } from 'react-router-dom'
-import DeleteIcon from '@mui/icons-material/Delete';
-import "./Css/cart.css"
+import React, { useContext } from "react";
+import { ecommerceContext } from "./Main";
+import { Link } from "react-router-dom";
+import DeleteIcon from "@mui/icons-material/Delete";
+import "./Css/cart.css";
 
 function Cart() {
+  const { cart, setCart } = useContext(ecommerceContext);
 
-  const{cart, setCart} = useContext(ecommerceContext)
-  // const [quantity, setQuantity] = useState(1); 
-
-
-  function deleteToCart(e, index){
-    e.preventDefault()
-    setCart(cart.filter((task, id) =>{
-      return id !== index
-    }))
-
-    // setCart(cart.filter(cartItem => cartItem.id !== index.id))
+  function deleteToCart(e, index) {
+    setCart(cart.filter((item, id) => id !== index));
   }
 
-  // function handleIncrease(e, index) {
-  //   setQuantity(quantity + 1);
-  //   // setQuantity(quantity.filter((task, id) => {
-  //   //   return quantity + 1
-  //   // }))
-  // }
+  function incrementQuantity(index) {
+    setCart((prevCart) => {
+      const newCart = [...prevCart];
+      newCart[index].quantity += 1;
+      return newCart;
+    });
+  }
 
-  // function handleDecrease() {
-  //   if (quantity > 1) {
-  //     setQuantity(quantity - 1);
-  //   }
-  // }
+  function decrementQuantity(index) {
+    setCart((prevCart) => {
+      const newCart = [...prevCart];
 
+      if (newCart[index].quantity > 1) {
+        newCart[index].quantity -= 1;
+      }
+
+      return newCart;
+    });
+  }
+
+  function getTotalPrice() {
+    return cart.reduce(
+      (total, item) => total + Math.floor(item.price * 85) * item.quantity,
+      0
+    );
+  }
   return (
     <>
-      <section className='cart'>
+      <section className="cart">
         <h2>Cart</h2>
-        <div className='cart-list'>
-
-          {
-            cart.map((item, index) => {
-              return(
-                <div className='cart-item' key={item.id}>
-                  <div className='left'>
-                    <img src={item.image}/>
-                  </div>
-                  <div className='right'>
-                    <h3>{item.title}</h3>
-                    <p>Price: {item.price}</p>
-                  </div>
-                  <Link className='deletToCart' onClick={(e) => deleteToCart(e, index)}><DeleteIcon/></Link>
-
-                  {/* <label>
-                    Quantity:
-                    <input type="number" min="1" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
-                  </label>
-                  <button onClick={handleDecrease}> - </button>
-                  <button onClick={(e) => handleIncrease(e, index)}> + </button> */}
+        <div className="cart-list">
+          {cart.map((item, index) => {
+            return (
+              <div className="cart-item" key={item.id}>
+                <div className="left">
+                  <img src={item.image} alt={item.title} />
                 </div>
-              )
-            })
-          }
 
+                <div className="center">
+                  <h3>{item.title}</h3>
+                  <p>Price: INR {Math.floor(item.price * 85)}</p>
+                  <Link
+                    className="deletToCart"
+                    onClick={(e) => deleteToCart(e, index)}
+                  >
+                    <DeleteIcon />
+                  </Link>
+                  <div className="quantity-control">
+                    <button onClick={() => decrementQuantity(index)}>-</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => incrementQuantity(index)}>+</button>
+                  </div>
+                </div>
+
+                <div className="right">
+                  <h3>
+                    Total: INR {Math.floor(item.price * 85) * item.quantity}
+                  </h3>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="cart-total">
+          <h3>Cart Total: INR {getTotalPrice()}</h3>
         </div>
       </section>
     </>
-  )
+  );
 }
 
-export default Cart
+export default Cart;

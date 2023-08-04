@@ -14,8 +14,6 @@ header {
     padding: 0px 30px;
     box-sizing: border-box;
     align-items: center;
-    /* position: fixed; */
-    /* top: 0; */
     transition: all 0.35s;
 }
 
@@ -40,11 +38,18 @@ header nav ul {
     padding: 0px;
     list-style: none;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
+
 header nav ul li a {
     padding-left: 22px;
     text-decoration: none;
     color: #000;
+}
+
+header nav ul li a svg{
+    margin-top: 0.5rem;
 }
 
 .count{

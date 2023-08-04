@@ -1,27 +1,53 @@
-.cart{
-    margin-top: 2.2rem;
-    padding: 2%;
+.cart {
+  margin-top: 2.2rem;
+  padding: 2%;
 }
-.cart-list{
-    padding: 3rem;
+
+.cart-list {
+  padding: 3rem;
 }
-.cart-list .cart-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+.cart-list .cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 1rem 0;
+  height: 11rem;
 }
-.cart-list .cart-item img{
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
+
+.cart-list .cart-item img {
+  width: 9rem;
+  height: 10rem;
+  object-fit: cover;
+  border: 1px solid;
 }
-.cart-list .cart-item .left, .cart-list .cart-item .right{
-    width: 25%;
+
+.cart-list .cart-item .left,
+.cart-list .cart-item .center,
+.cart-list .cart-item .right {
+  width: 25%;
 }
-.cart-list .cart-item .center{
-    width: 50%;
+
+.cart-list .cart-item .center h3,
+.cart-list .cart-item .center p {
+  margin: 0.7rem 0;
 }
-.deletToCart{
-    text-decoration: none;
-    color: #000;
+
+.cart-list .cart-item .center .deletToCart {
+  text-decoration: none;
+  color: #000;
+}
+
+.cart-list .cart-item .center .quantity-control button {
+  width: 3rem;
+  height: 2rem;
+  border: 2px solid #000;
+  background-color: #ff9700;
+  cursor: pointer;
+  margin: 0.7rem 0;
+}
+
+.quantity-control span {
+  font-size: 1.3rem;
+  margin: 0 1rem;
 }

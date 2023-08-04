@@ -4,6 +4,7 @@ import Header from './Header'
 import Home from './Home'
 import About from './About'
 import Cart from './Cart'
+import SingleProduct from './SingleProduct'
 
 export const ecommerceContext = createContext({})
 
@@ -26,6 +27,7 @@ function Main() {
                     <Header/>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
+                        <Route path='/product/:id' element ={<SingleProduct/>}/>
                         <Route path='/about' element={<About/>} />
                         <Route path='/cart' element={<Cart/>}/>
                     </Routes>

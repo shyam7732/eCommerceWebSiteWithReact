@@ -1,0 +1,18 @@
+.single-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.single-product .left {
+  width: 40%;
+}
+.single-product .left img {
+  max-width: 300px;
+}
+.single-product .right {
+  width: 60%;
+}
+
+.single-product .right p{
+    margin: 1rem 0;
+}

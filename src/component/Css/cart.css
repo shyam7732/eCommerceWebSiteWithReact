@@ -51,3 +51,40 @@
   font-size: 1.3rem;
   margin: 0 1rem;
 }
+
+
+/* Adjustments for smaller screens */
+
+@media screen and (max-width: 768px) {
+  .cart-list .cart-item {
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+
+  .cart-list .cart-item img {
+    width: 100%;
+    height: auto;
+    /* border: none;  */
+    margin-bottom: 1rem;
+  }
+
+  .cart-list .cart-item .left,
+  .cart-list .cart-item .center,
+  .cart-list .cart-item .right {
+    width: 100%;
+  }
+
+  .quantity-control {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .cart-list .cart-item .center .quantity-control button {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    margin: 0;
+  }
+}
